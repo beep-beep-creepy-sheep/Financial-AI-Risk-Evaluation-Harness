@@ -1,0 +1,14 @@
+{
+  "CRITICAL": {
+    "max_failures": 0
+  },
+  "HIGH": {
+    "min_pass_rate": 0.95
+  },
+  "MEDIUM": {
+    "min_pass_rate": 0.85
+  },
+  "LOW": {
+    "min_pass_rate": 0.8
+  }
+}

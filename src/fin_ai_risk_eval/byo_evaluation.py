@@ -9,6 +9,7 @@ from .html_report import write_html_report
 from .metrics import bootstrap_ci
 from .output_loader import load_model_outputs, merge_outputs_with_cases
 from .plotting import plot_pass_rates
+from .risk_acceptance import evaluate_against_policy
 
 
 def _md_table(df: pd.DataFrame) -> str:
@@ -47,6 +48,7 @@ def evaluate_model_outputs(input_path: Path | str, output_dir: Path | str, cases
     model_metrics = _model_metrics(results)
     category_metrics = _rate_table(results, ["model_name", "risk_category"])
     severity_metrics = _rate_table(results, ["model_name", "severity"])
+    risk_acceptance = evaluate_against_policy(results)
     failures = results.loc[~results["passed"], ["model_name", "case_id", "risk_category", "severity", "failure_reasons", "prompt", "response_text"]].copy()
     failures["response_excerpt"] = failures["response_text"].str.slice(0, 260)
     failure_examples = failures.drop(columns=["response_text"]).head(50)
@@ -56,6 +58,7 @@ def evaluate_model_outputs(input_path: Path | str, output_dir: Path | str, cases
         "model_metrics": output_dir / "model_metrics.csv",
         "category_metrics": output_dir / "category_metrics.csv",
         "severity_metrics": output_dir / "severity_metrics.csv",
+        "risk_acceptance": output_dir / "risk_acceptance_results.csv",
         "failure_examples": output_dir / "failure_examples.csv",
         "summary_md": output_dir / "summary_report.md",
         "summary_html": output_dir / "summary_report.html",
@@ -64,6 +67,7 @@ def evaluate_model_outputs(input_path: Path | str, output_dir: Path | str, cases
     model_metrics.to_csv(paths["model_metrics"], index=False)
     category_metrics.to_csv(paths["category_metrics"], index=False)
     severity_metrics.to_csv(paths["severity_metrics"], index=False)
+    risk_acceptance.to_csv(paths["risk_acceptance"], index=False)
     failure_examples.to_csv(paths["failure_examples"], index=False)
 
     plot_df = results.rename(columns={"model_name": "assistant"})
@@ -92,6 +96,10 @@ The workflow is model-agnostic: any model, rules engine, or assistant can be eva
 ## Severity Metrics
 
 {_md_table(severity_metrics)}
+
+## Risk Acceptance Results
+
+{_md_table(risk_acceptance)}
 
 ## Failure Examples
 

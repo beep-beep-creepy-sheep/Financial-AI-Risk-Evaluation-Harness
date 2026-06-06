@@ -12,6 +12,7 @@ from .fairness import run_fairness_perturbations
 from .metrics import pass_rate_by_category, severity_weighted_score, summary_metrics
 from .plotting import plot_credit_group_metrics, plot_pass_rates
 from .reporting import write_reports
+from .risk_acceptance import evaluate_against_policy
 from .risk_taxonomy import write_taxonomy
 from .synthetic_data import write_synthetic_credit_data
 
@@ -53,6 +54,7 @@ def evaluate(assistant: str = typer.Option("both", help="Built-in assistant to e
     summary_metrics(results).to_csv(REPORTS_DIR / "evaluation_metrics.csv", index=False)
     pass_rate_by_category(results).to_csv(REPORTS_DIR / "category_metrics.csv", index=False)
     severity_weighted_score(results).to_csv(REPORTS_DIR / "assistant_comparison.csv", index=False)
+    evaluate_against_policy(results).to_csv(REPORTS_DIR / "risk_acceptance_results.csv", index=False)
     plot_pass_rates(results, FIGURES_DIR)
     console.print(f"Wrote {len(results)} evaluation rows to {out}.")
 

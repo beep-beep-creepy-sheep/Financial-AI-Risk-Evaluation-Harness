@@ -4,6 +4,7 @@ import pandas as pd
 
 from .config import FIGURES_DIR, REPORTS_DIR, ensure_dirs
 from .metrics import pass_rate_by_category, severity_weighted_score, summary_metrics
+from .risk_acceptance import evaluate_against_policy
 
 
 def _md_table(df: pd.DataFrame) -> str:
@@ -21,6 +22,7 @@ def write_reports(results: pd.DataFrame, credit_metrics: dict[str, object] | Non
     summary = summary_metrics(results)
     by_cat = pass_rate_by_category(results)
     weighted = severity_weighted_score(results)
+    acceptance = evaluate_against_policy(results)
     credit_text = "Credit model metrics were not generated in this run."
     if credit_metrics:
         credit_text = "\n".join(f"- {k}: {v:.3f}" if isinstance(v, float) else f"- {k}: {v}" for k, v in credit_metrics["metrics"].items())
@@ -47,6 +49,10 @@ The same case set can evaluate any model or assistant through the BYO output wor
 ## Risk Category Pass Rates
 
 {_md_table(by_cat)}
+
+## Risk Acceptance Results
+
+{_md_table(acceptance)}
 
 ## Credit Model Diagnostics
 
