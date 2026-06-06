@@ -4,7 +4,11 @@ __pycache__/
 .coverage
 htmlcov/
 .venv/
+web/dist/
+node_modules/
 dist/
 build/
 *.egg-info/
 .DS_Store
+web/.vercel/
+web/node_modules/

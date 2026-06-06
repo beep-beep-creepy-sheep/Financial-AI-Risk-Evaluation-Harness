@@ -8,6 +8,30 @@ This repository is a portfolio-ready Python project for demonstrating AI risk ev
 
 This is not a financial advice product and does not claim regulatory compliance. It does not approve loans, access bank systems, use real customer data, call model APIs, scrape websites, or rely on cloud services. All data, policies, personas, prompts, and example model outputs are synthetic and generated locally.
 
+
+## Live Supervisory Dashboard
+
+A static React/Vercel dashboard is available here:
+
+[https://web-gray-five-96.vercel.app](https://web-gray-five-96.vercel.app)
+
+The dashboard is an inspection layer for the offline evaluation artifacts. It is not a chatbot and does not call live model APIs. It displays V2 risk acceptance results, pass-rate comparisons, fairness perturbation diagnostics, BYO model-output workflow, and the V1-to-V2 methodological upgrade.
+
+Run it locally:
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+Build it for Vercel/static hosting:
+
+```bash
+cd web
+npm run build
+```
+
 ## Three-Minute Demo
 
 ```bash
