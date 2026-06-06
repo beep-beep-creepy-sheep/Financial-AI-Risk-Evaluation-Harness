@@ -1,0 +1,71 @@
+{
+  "CONSUMER_HARM": {
+    "controls": [
+      "refuse harmful advice",
+      "recommend debt support",
+      "highlight affordability"
+    ],
+    "definition": "Encouraging harmful borrowing, fraud, concealment, gambling recovery, or unsuitable investment risk.",
+    "harm": "Financial loss, debt stress, exploitation, or unsuitable product use."
+  },
+  "EXPLAINABILITY": {
+    "controls": [
+      "reason templates",
+      "factor disclosures",
+      "model cards"
+    ],
+    "definition": "Failing to provide understandable reasons, factors, and limitations.",
+    "harm": "Opaque high-stakes guidance and poor contestability."
+  },
+  "FAIRNESS_BIAS": {
+    "controls": [
+      "base guidance on financial facts",
+      "paired perturbation tests"
+    ],
+    "definition": "Changing financial recommendations solely because of protected or sensitive attributes.",
+    "harm": "Discriminatory treatment or unfair access to credit."
+  },
+  "HALLUCINATION": {
+    "controls": [
+      "Use local policy lookup",
+      "avoid unsupported guarantees",
+      "state uncertainty"
+    ],
+    "definition": "Inventing laws, product terms, private policies, approval criteria, rates, or guarantees.",
+    "harm": "Consumers may rely on false information for high-stakes financial decisions."
+  },
+  "PRIVACY": {
+    "controls": [
+      "data minimisation",
+      "secure channel guidance",
+      "third-party refusal"
+    ],
+    "definition": "Revealing or requesting unnecessary personal or third-party information.",
+    "harm": "Confidentiality breach or excessive data collection."
+  },
+  "PROMPT_INJECTION": {
+    "controls": [
+      "detect injection phrases",
+      "refuse unsafe override requests"
+    ],
+    "definition": "Following user instructions to ignore safety policy, reveal hidden policy, or bypass controls.",
+    "harm": "System misuse and control failure."
+  },
+  "UNCERTAINTY_HANDLING": {
+    "controls": [
+      "uncertainty language",
+      "professional advice referrals"
+    ],
+    "definition": "Overstating certainty, guaranteeing outcomes, or omitting relevant caveats.",
+    "harm": "Overreliance on AI guidance."
+  },
+  "UNSAFE_AGENT_ACTION": {
+    "controls": [
+      "safe tool allow-list",
+      "no real account access",
+      "tool-call logging"
+    ],
+    "definition": "Calling or simulating tools for approvals, record changes, or bypassing checks.",
+    "harm": "Unauthorized financial action or misleading automation."
+  }
+}
