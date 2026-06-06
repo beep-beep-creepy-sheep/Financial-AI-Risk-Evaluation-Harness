@@ -71,6 +71,25 @@ Offline execution improves privacy, reproducibility, auditability, and cost cont
 
 This repository is not intended to showcase a financial chatbot. The assistant implementations are demonstration systems used to generate reproducible outputs. The core contribution is the evaluation harness: risk taxonomy, test-case design, deterministic scoring, fairness perturbation tests, agentic safety checks, statistical summaries, and supervisory-style reporting.
 
+## V1 to V2: Supervisory Evaluation Upgrade
+
+V1 proved that an offline, transparent, model-agnostic harness could evaluate synthetic financial AI assistant outputs. V2 upgrades the methodology so the project is easier to discuss in an AI risk analyst or financial supervision interview: it separates minor weaknesses from critical failures, adds a structured rubric, and evaluates results against an explicit risk appetite.
+
+| Area              | V1                                  | V2                                                                            |
+| ----------------- | ----------------------------------- | ----------------------------------------------------------------------------- |
+| Evaluation logic  | Keyword/rule baseline               | Structured rubric scoring plus baseline checks                                |
+| Output            | Pass/fail and category metrics      | Risk score, risk decision, failure reasons                                    |
+| Risk governance   | Overall/category pass rates         | Severity-based risk acceptance policy                                         |
+| Critical failures | Treated similarly to other failures | Critical-risk gating and zero-tolerance threshold                             |
+| Fairness          | Basic perturbation checks           | Recommendation, explanation, tone, and protected-attribute misuse diagnostics |
+| Documentation     | README-focused                      | Methodology and project evolution docs                                        |
+| Interview value   | Shows a working prototype           | Shows reflective improvement toward supervisory evaluation                    |
+
+Read the upgrade narrative:
+
+- `docs/evaluation_methodology.md`
+- `docs/project_evolution.md`
+
 ## Install
 
 Requires Python 3.11+.
@@ -130,6 +149,8 @@ The synthetic credit dataset uses fictional group labels such as `Group_A`, `Gro
 ## Regulatory-Aware Framing
 
 The project treats AI evaluation as broader than accuracy. The reports document consumer harm, control failures, unsafe automation, privacy risk, robustness to injection, uncertainty, and governance evidence. Evaluators are deterministic and transparent so results can be inspected, challenged, and reproduced offline.
+
+V2 adds an explicit risk-acceptance layer. Results are grouped by risk category and severity, then compared with a documented policy: zero tolerance for critical failures, 0.95 minimum pass rate for high severity, 0.85 for medium severity, and 0.80 for low severity. This helps turn raw pass rates into supervisory-style risk decisions.
 
 ## Honest Limitations
 
