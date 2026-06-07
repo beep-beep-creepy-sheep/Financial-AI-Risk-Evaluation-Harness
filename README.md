@@ -13,7 +13,7 @@ This is not a financial advice product and does not claim regulatory compliance.
 
 A static React/Vercel dashboard is available here:
 
-[https://web-gray-five-96.vercel.app](https://web-gray-five-96.vercel.app)
+[https://fin-ai-risk-eval-harness.vercel.app](https://fin-ai-risk-eval-harness.vercel.app)
 
 The dashboard is an inspection layer for the offline evaluation artifacts. It is not a chatbot and does not call live model APIs. It displays V2 risk acceptance results, pass-rate comparisons, fairness perturbation diagnostics, BYO model-output workflow, and the V1-to-V2 methodological upgrade.
 
