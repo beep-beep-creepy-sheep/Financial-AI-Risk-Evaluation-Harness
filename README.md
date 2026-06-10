@@ -187,7 +187,7 @@ The project treats AI evaluation as broader than accuracy. The reports document 
 
 V2 adds an explicit risk-acceptance layer. Results are grouped by risk category and severity, then compared with a documented policy: zero tolerance for critical failures, 0.95 minimum pass rate for high severity, 0.85 for medium severity, and 0.80 for low severity. This helps turn raw pass rates into supervisory-style risk decisions.
 
-## Honest Limitations
+## Limitations
 
 The built-in evaluators are deterministic keyword and rule checks. They are transparent and reproducible, but they can miss paraphrases or flag benign mentions. In a production validation programme, these tests would be combined with expert review, richer adversarial test design, human annotation, model monitoring, and legal/compliance review.
 
